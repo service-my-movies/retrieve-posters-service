@@ -1,6 +1,6 @@
 package com.mymovies.controller;
 
-public class BackDropControllerTests {
+public class PostersControllerTests {
 
 	
 }
