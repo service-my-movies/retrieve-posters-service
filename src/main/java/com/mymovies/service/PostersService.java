@@ -26,6 +26,9 @@ public class PostersService implements IPostersService {
 	@Value("${resource.api.language}")
 	private String Language;
 	
+	@Value("${service.url}")
+	private String serviceUrl;
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(PostersService.class);
 	
 	@Autowired
@@ -35,8 +38,12 @@ public class PostersService implements IPostersService {
 	
 		ImageDTO images = null;
 		
+		String url = serviceUrl == "" ? BASE_URL+movie_id+"/images"+API_KEY+Language : serviceUrl+movie_id;
+
+		LOGGER.info("@Get retrievePosters Service URL : " + url);
+		
 		try {
-			images = restTemplate.getForObject(BASE_URL+movie_id+"/images"+API_KEY+Language, ImageDTO.class);
+			images = restTemplate.getForObject(url, ImageDTO.class);
 		}catch (Exception e) {
 			LOGGER.error("Unexpected Error From Service: retrievePosters: " + e);
 		}

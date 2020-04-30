@@ -6,6 +6,7 @@ import com.mymovies.dto.PostersDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import com.mymovies.service.IPostersService;
 
 @Controller
 @RequestMapping("/posters")
+@RefreshScope
 public class PostersController implements IPostersController {
 
 	@Autowired
